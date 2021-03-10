@@ -63,8 +63,7 @@ export class ProgramsComponent implements OnInit {
   Search() {
     this.listOfProgsfilterd = this.listOfProgs.filter(item =>
       item.Name.includes(this.learningField)
-      && item.city.includes(this.SelectedCity)
-     
+      && item.city.includes(this.SelectedCity1) 
     )
   }
   Search2() {

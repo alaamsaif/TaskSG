@@ -31,13 +31,11 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.sass",
-              "node_modules/selectize/dist/css/selectize.css",
-              "node_modules/selectize/dist/css/selectize.semantic.css"
+              "src/styles.sass"
+             
             ],
             "scripts": [
-              "node_modules/jquery/dist/jquery.min.js",
-              "node_modules/ng-selectize/assets/selectize.standalone.js"
+             
             ]
           },
           "configurations": {
