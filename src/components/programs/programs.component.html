@@ -1,0 +1,180 @@
+<div class="container my-5">
+
+    <div class="row">
+        <div class="col-lg-2 col-md-0 col-sm-0">
+
+        </div>
+        <div class="col-lg-8 col-md-12 col-sm-12">
+            <div class="row no-gutters p-0 searchBtnGroup" role="group">
+                <div class="col-lg-5 col-md-5 col-sm-12">
+                    <input [(ngModel)]="learningField" class="w-100 px-4 py-3 learningField" type="text"
+                        placeholder="What do you want to learn ?">
+                </div>
+                <div class="col-lg-5 col-md-5 col-sm-12 ">
+                    <select class="w-100 px-4 py-3 selectcitySearchbar" [(ngModel)]="SelectedCity1">
+                        <option value="" disabled selected hidden>Write or choose a city</option>
+                        <option *ngFor="let item of CitiesWithoutDup" [value]="item">{{item}}</option>
+                    </select>
+                </div>
+                <div class="col-lg-2 col-md-2 col-sm-12">
+                    <button type="button " class="btn h-100 w-100 py-3" (click)="Search()">Search</button>
+                </div>
+
+            </div>
+        </div>
+        <div class="col-lg-2 col-md-0 col-sm-0">
+
+        </div>
+    </div>
+
+</div>
+<div class="container">
+    <div class="row ">
+        <div class="leftContainer container rounded col-lg-3 col-md-12 col-sm-12 mb-5">
+            <div class="py-3">
+                <h5>City</h5>
+                <select [(ngModel)]="SelectedCity" class="form-control">
+                    <option value="" disabled selected hidden>Choose one city or more</option>
+                    <option *ngFor="let item of CitiesWithoutDup" [value]="item">{{item}}</option>
+
+                </select>
+
+            </div>
+            <div class="py-3">
+                <h5>Program</h5>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="Program" id="Radio1" value="Bachelor" checked
+                        (change)="radioforProgramChange($event)">
+                    <label class="form-check-label" for="Radio1">
+                        Bachelor
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="Program" id="Radio2" value="Master"
+                        (change)="radioforProgramChange($event)">
+                    <label class="form-check-label" for="Radio2">
+                        Master
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="Program" id="Radio3" value="MBA"
+                        (change)="radioforProgramChange($event)">
+                    <label class="form-check-label" for="Radio3">
+                        MBA
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="Program" id="Radios4" value="BHD"
+                        (change)="radioforProgramChange($event)">
+                    <label class="form-check-label" for="Radio4">
+                        BHD
+                    </label>
+                </div>
+
+
+            </div>
+            <div class="py-3">
+                <h5>Field</h5>
+                <select [(ngModel)]="SelectedField" class="form-control">
+                    <option value="" disabled selected hidden>Choose one Field or more</option>
+                    <option *ngFor="let item of FieldsWithoutDup" [value]="item">{{item}}</option>
+
+                </select>
+
+            </div>
+            <div class="py-3">
+                <h5>School</h5>
+                <select [(ngModel)]="SelectedSchool" class="form-control">
+                    <option value="" disabled selected hidden>Choose one school or more</option>
+                    <option *ngFor="let item of SchoolsWithoutDup" [value]="item">{{item}}</option>
+
+                </select>
+
+            </div>
+            <div class="py-3">
+                <h5>Language</h5>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="Language" id="Radiolan1" value="All" checked
+                        (change)="radioforLanguageChange($event)">
+                    <label class="form-check-label" for="Radiolan1">
+                        All
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="Language" id="Radiolan2" value="English"
+                        (change)="radioforLanguageChange($event)">
+                    <label class="form-check-label" for="Radiolan2">
+                        English
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="Language" id="Radiolan3" value="French"
+                        (change)="radioforLanguageChange($event)">
+                    <label class="form-check-label" for="Radiolan3">
+                        French
+                    </label>
+                </div>
+            </div>
+            <div class="py-3">
+                <h5>Sort</h5>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="Sorting" id="RadioSorting1" value="lowtohigh"
+                        checked (change)="radioforSortingChange($event)">
+                    <label class="form-check-label" for="Radiolan1">
+                        Price: low to high
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="Sorting" id="RadioSorting2" value="hightolow"
+                        (change)="radioforSortingChange($event)">
+                    <label class="form-check-label" for="Radiolan2">
+                        Price: high to low
+                    </label>
+                </div>
+
+            </div>
+            <div class="py-3">
+                <button class="btn w-100" (click)="Search2()">
+                    Search
+                </button>
+
+            </div>
+        </div>
+        <div class="rightContainer container rounded col-lg-8 col-md-12 col-sm-12">
+            <div *ngFor="let item of listOfProgsfilterd">
+                <div class=" row itemcard py-2">
+                    <div class="col-lg-10 col-md-10 col-sm-12">
+                        <div class="row">
+                            <div class="col-3">
+                                <img [src]="'assets/Images/'+item.school+'.png'"
+                                    onerror="this.src='assets/Images/placeholder-200x200.png'"
+                                    class="rounded w-100 h-auto schoolimg">
+                            </div>
+                            <div class="col-9 py-2">
+                                <h6> {{item.Name}}</h6>
+                                <p class="textSchool"> {{item.school}}</p>
+                                <div class="d-flex justify-content-between">
+                                    <p>
+                                        <span class="mr-2" style=" color: rgb(194, 185, 185);">Tuition fee</span>
+                                        <span style="color: rgb(24, 101, 148);">{{item.fee }}$ Per Year</span>
+                                    </p>
+                                    <p>
+                                        <span style="color: rgb(24, 101, 148);">{{item.city}}</span>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-2 col-md-2 col-sm-12 d-flex align-items-end">
+                        <button class="btn" style="font-size: 13px;">
+                            More info
+                        </button>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+</div>

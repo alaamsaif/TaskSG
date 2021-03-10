@@ -31,9 +31,14 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.sass"
+              "src/styles.sass",
+              "node_modules/selectize/dist/css/selectize.css",
+              "node_modules/selectize/dist/css/selectize.semantic.css"
             ],
-            "scripts": []
+            "scripts": [
+              "node_modules/jquery/dist/jquery.min.js",
+              "node_modules/ng-selectize/assets/selectize.standalone.js"
+            ]
           },
           "configurations": {
             "production": {
@@ -127,5 +132,8 @@
       }
     }
   },
-  "defaultProject": "Task"
+  "defaultProject": "Task",
+  "cli": {
+    "analytics": "a6eb1f8e-b177-4355-a9c8-b1249b193950"
+  }
 }
